@@ -4,7 +4,8 @@ __pycache__/
 
 # Ignore __pycache__ folders in the app directory
 app/**/__pycache__/
-
+app/__pycache__/
+ 
 # Other ignores
 *.env
 *.log
