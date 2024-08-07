@@ -28,7 +28,7 @@ async def extract_content(file: UploadFile = File(...)):
             content = await pdf_extractor.extract(file)
         elif file_extension == ".csv":
             content = await csv_extractor.extract(file)
-            # Skip token checking for CSV files
+            # Skip token checking for CSV files TODO: Add CSV token counting
             num_tokens = None
             within_limit = None
         elif file_extension in [".doc", ".docx"]:
@@ -36,7 +36,7 @@ async def extract_content(file: UploadFile = File(...)):
         elif file_extension in [".txt", ".md"]:
             content = await text_extractor.extract(file)
         
-        # Perform token checking only for non-CSV files
+        # Perform token checking only for non-CSV files TODO: Add token counting for non-CSV files
         if file_extension != ".csv":
             num_tokens, within_limit = check_token_limit(content, file.filename)
         else:

@@ -4,7 +4,7 @@ import tiktoken
 
 
 
-TOKEN_LIMIT = 8191
+TOKEN_LIMIT = 20000
 
 
 #"gpt-4o": "o200k_base",
@@ -16,12 +16,14 @@ TOKEN_LIMIT = 8191
 #"text-embedding-ada-002": "cl100k_base",
 #"text-embedding-3-small": "cl100k_base",
 #"text-embedding-3-large": "cl100k_base",
-ENCODING_NAME = "text-embedding-3-small"
+
+## this uses the new gpt4-o models token limit
+ENCODING_NAME = "o200k_base"
 
 
 
 def count_tokens(content: str) -> int:
-    encoding = tiktoken.encoding_for_model(ENCODING_NAME)
+    encoding = tiktoken.get_encoding(ENCODING_NAME)
     tokens = encoding.encode(content)
     num_tokens = len(tokens)
     return num_tokens

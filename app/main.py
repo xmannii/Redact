@@ -4,13 +4,17 @@ import dotenv
 
 dotenv.load_dotenv()
 
-app = FastAPI()
+app = FastAPI(
+    title="Redact RAG API",
+    description="API for Redact RAG",
+    version="1.0.0",
+)
 
 app.include_router(file_processing.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to the Maux RAG API"}
+    return {"message": "Welcome to the Redact RAG API"}
 
 if __name__ == "__main__":
     import uvicorn
